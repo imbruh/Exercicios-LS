@@ -1,0 +1,11 @@
+body{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 23px;
+}
+textarea{
+    margin-bottom: 18px;
+}
+button{
+    margin: 5px;
+}
