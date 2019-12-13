@@ -101,20 +101,54 @@ tipoPoke.addEventListener('click',function(){
   }
 })
 
-const ordenar = document.querySelector('#sort-type')
+const ordenar2 = document.querySelector('#sort-type')
 const options = ['Lowest Number (First)','Highest Number (First)','A-Z','Z-A']
-let nomes
 
-ordenar.addEventListener('click',function(){
-    if(ordenar.value=='Lowest Number (First)'){
+function ordenar(valor){
+  nomes=[]
+  order=[]
+  if (valor=='crescente'){
+    for (i of pokemons){
+      nomes.push(i.name)
+    }
+    nomes.sort()
+    for (i of nomes){
+      for (j of pokemons){
+        if(i==j.name){
+          order.push(j)
+        }
+      }
+    }
+  }      
+  else if (valor=='decrescente'){
+    for (i of pokemons){
+      nomes.push(i.name)
+    }
+    nomes.sort()
+    nomes.reverse()
+    for (i of nomes){
+      for (j of pokemons){
+        if(i==j.name){
+          order.push(j)
+        }
+      }
+    }
+  }
+  return order
+}
+
+ordenar2.addEventListener('click',function(){
+    if(ordenar2.value=='Lowest Number (First)'){
       exibir(pokemons)
     }
-    else if(ordenar.value=='Highest Number (First)'){
+    else if(ordenar2.value=='Highest Number (First)'){
       exibir(pokemons.reverse())
     }
-    else if(ordenar.value=='A-Z'){
-      nome_order=pokemons.filter(p=>p.name.includes(nomes))
-      pokemons.sort()
-      exibir(pokemons)
+    else if(ordenar2.value=='A-Z'){
+      exibir(ordenar('crescente'))
     }
+    else if(ordenar2.value=='Z-A'){
+      exibir(ordenar('decrescente'))
+    }             
 })
+

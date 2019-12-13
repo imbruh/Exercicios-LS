@@ -2622,13 +2622,20 @@ const pokemons = [
     }
   ]
 
-
-
-nomes=''
-  for (i of pokemons){
-    nomes+=i.name
-    nomes+=', '
+vetor=[] 
+order=[] 
+for (let pokemon of pokemons){
+  vetor.push(pokemon.name)
+}
+vetor.sort()
+vetor.reverse()
+for (let nome of vetor){
+  for (let poke of pokemons){
+    if (nome==poke.name){
+      order.push(poke)
+    }
   }
-console.log(nomes)
-nome_order=pokemons.filter(p=>p.name.includes(nomes))
-//console.log(nome_order)
+}
+console.log(order)
+
+
